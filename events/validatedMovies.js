@@ -5,9 +5,12 @@ module.exports = {
   async execute(reaction, user, client) {
     const firstChannel = process.env.VALIDATE;
     const newChannel = process.env.VALIDATENEW;
-    const message = reaction.message;
+
+    const message = await reaction.message.fetch();
+
     const hasPermission = await checkPermission(user, message);
     if (!hasPermission) return;
+
     if (message.channel.id === firstChannel) {
       if (reaction.emoji.name !== '✅') return;
       try {
