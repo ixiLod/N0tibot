@@ -16,7 +16,7 @@ module.exports = {
       try {
         const getChannel = client.channels.cache.get(newChannel);
         const fetchChannel = await getChannel.fetch();
-        await fetchChannel.send(`🎬 ${message.content} et à était vu 🎬`);
+        await fetchChannel.send(`🎬 ${message.content} et a été vu 🎬`);
       } catch (error) {
         console.log(error);
       }
