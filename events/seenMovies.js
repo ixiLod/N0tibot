@@ -1,9 +1,13 @@
+const { checkPermission } = require('../helpers/adminLock');
+
 module.exports = {
   name: 'messageReactionAdd',
   async execute(reaction, user, client) {
     const firstChannel = process.env.SEEN;
     const newChannel = process.env.SEENNEW;
     const message = reaction.message;
+    const hasPermission = await checkPermission(user, message);
+    if (!hasPermission) return;
     if (message.channel.id === firstChannel) {
       if (reaction.emoji.name !== '🎬') return;
       try {
