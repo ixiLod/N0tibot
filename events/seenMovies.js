@@ -3,8 +3,8 @@ const { checkPermission } = require('../helpers/adminLock');
 module.exports = {
   name: 'messageReactionAdd',
   async execute(reaction, user, client) {
-    const firstChannel = process.env.SEEN;
-    const newChannel = process.env.SEENNEW;
+    const firstChannel = process.env.VALIDATENEW;
+    const newChannel = process.env.SEEN;
     const message = reaction.message;
     const hasPermission = await checkPermission(user, message);
     if (!hasPermission) return;
