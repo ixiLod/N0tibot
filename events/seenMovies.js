@@ -17,9 +17,7 @@ module.exports = {
         const getChannel = client.channels.cache.get(newChannel);
         const fetchChannel = await getChannel.fetch();
         await fetchChannel.send(`🎬 ${message.content} et a été vu 🎬`);
-        setTimeout(() => {
-          message.delete();
-        }, 10000);
+        await message.delete();
       } catch (error) {
         console.log(error);
       }
